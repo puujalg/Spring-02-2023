@@ -9,7 +9,7 @@ public class Kodune1Application {
     public static void main(String[] args) {
 
         SpringApplication.run(Kodune1Application.class, args);
-        
+
     }
 
 }
