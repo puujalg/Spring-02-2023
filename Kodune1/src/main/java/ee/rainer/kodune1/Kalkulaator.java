@@ -70,6 +70,7 @@ public class Kalkulaator {
         }
         return integers;
     }
+
     @GetMapping("addnumtoall/{num}") //localhost:8080/addnumtoall
     public List<Integer> addNumToAll (@PathVariable int num) {
         for (int i = 0; i < integers.size(); i++) {
