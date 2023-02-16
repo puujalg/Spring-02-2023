@@ -58,7 +58,7 @@ public class Kalkulaator {
         return average;
     }
 
-    @GetMapping("numbritearv") //localhost:8080/numbritearv
+    @GetMapping("numberamount") //localhost:8080/numbramount
     public int numberAmount () {
         return integers.size();
     }
