@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -19,7 +20,7 @@ public class Game {
     @GeneratedValue
     private Long id;
     private int correctGuesses;
-    private LocalDateTime duration;
+    private Date duration;
 
     @OneToOne
     private Player player;

@@ -1,31 +1,51 @@
 package ee.rainer.cardgame;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Optional;
 
 @RestController
 public class GameController {
 
     private Card card;
-
     private LocalDateTime roundStartTime;
+    private int correctAnswers;
+    private int lives;
+    private Date gameStartTime;
+    private Player player;
 
-    private LocalDateTime roundCurrentTime;
+    @Autowired
+    GameRepository gameRepository;
+    @Autowired
+    PlayerRepository playerRepository;
+
+
+    @GetMapping("player/{playerName}")
+    public String player(@PathVariable String playerName) {
+        Optional<Player> playerFound = playerRepository.findById(playerName);
+        if (playerFound.isEmpty()) {
+            Player newplayer = new Player(playerName, new Date(),0);
+            player = playerRepository.save(newplayer);
+        } else {
+            player = playerFound.get();
+        }
+        return "OK";
+    }
 
     @GetMapping("start")
     public Card startRound() {
         roundStartTime = LocalDateTime.now();
 
-        roundCurrentTime= LocalDateTime.now();
-
-        //Duration duration = Duration.between(roundStartTime, roundCurrentTime);
-
-        //System.out.println(duration);
         if (card == null) {
+            correctAnswers = 0;
+            lives = 3;
+            gameStartTime = new Date();
             card = new Card();
         }
         return card;
@@ -38,6 +58,16 @@ public class GameController {
         LocalDateTime actualTime = LocalDateTime.now();
 
         if (actualTime.isAfter(roundStartTimeLater)) {
+            lives--;
+            if (lives == 0) {
+                card = null;
+                Date gameFinish = new Date():
+                Date diff = new Date(gameFinish.getTime() - gameStartTime.getTime());
+
+                Game game = new Game(1L, correctAnswers, diff, player);
+                gameRepository.save(game);
+                return "Game over!";
+            }
             return "Aeg läbi!";
         }
 
@@ -51,9 +81,22 @@ public class GameController {
         String response;
 
         if (userGuess.equals("lower") && card.getValue() < newCard.getValue()) {
+            correctAnswers++;
             response = "Correct!";
         } else {
+            lives--;
             response = "Wrong!";
+            if (lives == 0) {
+
+                card = null;
+                Date gameFinish = new Date():
+                Date diff = new Date(gameFinish.getTime() - gameStartTime.getTime());
+
+                Game game = new Game(1L, correctAnswers, diff, player);
+                gameRepository.save(game);
+                return "Game over!";
+
+            }
         }
 
         card = newCard;
