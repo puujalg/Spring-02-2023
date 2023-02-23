@@ -9,27 +9,31 @@ import java.util.List;
 public class SpordialaController {
 
     @Autowired
-    SpordialadeTabel spordiAladeTabel;
+    SpordialadeRepository spordiAladeRepository;
 
+    @GetMapping("kuvaspordialad")
+    public List<Spordiala> kuvaSpordialad() {
+        return spordiAladeRepository.findAll();
+    }
     @PostMapping("lisaspordiala")
     public List<Spordiala> lisaSpordiala(@RequestBody Spordiala spordiala) {
-        if (spordiAladeTabel.findById(spordiala.getId()).isEmpty()) {
-            spordiAladeTabel.save(spordiala);
+        if (spordiAladeRepository.findById(spordiala.getId()).isEmpty()) {
+            spordiAladeRepository.save(spordiala);
         }
-        return spordiAladeTabel.findAll();
+        return spordiAladeRepository.findAll();
     }
 
     @PutMapping("muudaspordiala")
     public List<Spordiala> editProduct(@RequestBody Spordiala spordiala) {
-        if (spordiAladeTabel.findById(spordiala.getId()).isPresent()) {
-            spordiAladeTabel.save(spordiala);
+        if (spordiAladeRepository.findById(spordiala.getId()).isPresent()) {
+            spordiAladeRepository.save(spordiala);
         }
-        return spordiAladeTabel.findAll();
+        return spordiAladeRepository.findAll();
     }
 
     @DeleteMapping("kustutaspordiala/{id}")
     public List<Spordiala> deleteProduct(@PathVariable Long id) {
-        spordiAladeTabel.deleteById(id);
-        return spordiAladeTabel.findAll();
+        spordiAladeRepository.deleteById(id);
+        return spordiAladeRepository.findAll();
     }
 }

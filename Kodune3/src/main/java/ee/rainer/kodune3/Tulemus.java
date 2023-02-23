@@ -1,5 +1,6 @@
 package ee.rainer.kodune3;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +10,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "Tulemus")
 public class Tulemus {
 
-    private long sportlaseID;
-    private long spordialaID;
+    @Id
+    private long tulemuseId;
+    private Long sportlaseId;
+    private Long spordialaId;
     private double tulemus;
+    private double tulemusPunktid;
 }
