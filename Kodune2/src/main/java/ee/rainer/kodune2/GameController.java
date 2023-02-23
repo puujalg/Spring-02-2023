@@ -33,6 +33,13 @@ public class GameController {
         // return null;
     }
 
+    /**
+    @GetMapping("arva/{arvamus}")
+    public String userGuess () {
+
+    }
+     **/
+
     @GetMapping("draw")
     public Card drawNewCard () {
         if(gameStarted == true) {

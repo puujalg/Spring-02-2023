@@ -18,7 +18,7 @@ public class TulemuseController {
     SpordialadeRepository spordialadeRepository;
 
     @GetMapping("kuvatulemused")
-    public List<Tulemus> kuvaSpordialad() {
+    public List<Tulemus> kuvaTulemused() {
         return tulemusteRepository.findAll();
     }
 
@@ -39,7 +39,7 @@ public class TulemuseController {
         return tulemusteRepository.findAll();
     }
 
-    // tulemuse arvutatakse punktideks (p = jooksud SEKUNDID / heited MEETRID / hüpped SENTIMEETRID
+    // tulemus arvutatakse punktideks (p = jooksud SEKUNDID / heited MEETRID / hüpped SENTIMEETRID
     public double arvutaPunktideks(boolean kasJooksuala, double a, double b, double c, double p) {
         double alaPunktid = 0;
 

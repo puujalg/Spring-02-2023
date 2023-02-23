@@ -24,7 +24,7 @@ public class SpordialaController {
     }
 
     @PutMapping("muudaspordiala")
-    public List<Spordiala> editProduct(@RequestBody Spordiala spordiala) {
+    public List<Spordiala> muudaSpordiala(@RequestBody Spordiala spordiala) {
         if (spordiAladeRepository.findById(spordiala.getId()).isPresent()) {
             spordiAladeRepository.save(spordiala);
         }
@@ -32,7 +32,7 @@ public class SpordialaController {
     }
 
     @DeleteMapping("kustutaspordiala/{id}")
-    public List<Spordiala> deleteProduct(@PathVariable Long id) {
+    public List<Spordiala> kustutaSpordiala(@PathVariable Long id) {
         spordiAladeRepository.deleteById(id);
         return spordiAladeRepository.findAll();
     }

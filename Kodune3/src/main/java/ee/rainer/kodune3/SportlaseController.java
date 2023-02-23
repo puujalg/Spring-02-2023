@@ -13,8 +13,9 @@ public class SportlaseController {
     @Autowired
     TulemusteRepository tulemusteRepository;
 
+    // {"id":240,"nimi":"sportlasenimi,"riik":"sportlaseriik","vanus":50}
     @PostMapping("lisasportlane")
-    public List<Sportlane> lisaSpordiala(@RequestBody Sportlane sportlane) {
+    public List<Sportlane> lisaSportlane(@RequestBody Sportlane sportlane) {
         if (sportlasteRepository.findById(sportlane.getId()).isEmpty()) {
             sportlasteRepository.save(sportlane);
         }
@@ -33,20 +34,23 @@ public class SportlaseController {
     public List<Sportlane> kustutaSportlane(@PathVariable Long id) {
         sportlasteRepository.deleteById(id);
         return sportlasteRepository.findAll();
+
+        // Peaks lisama ka sportlase tulemuste kustutamise?
+
     }
 
 
     @GetMapping("sportlasepunktiseis/{id}")
     public double sportlaseHetkePunktid(@PathVariable Long id) {
 
-        double punktisumma = 0;
+        double punktiSumma = 0;
 
         List<Tulemus> sportlaseTulemused = tulemusteRepository.findAllBySportlaseId(id);
 
         for (Tulemus tulemus: sportlaseTulemused) {
-            punktisumma += tulemus.getTulemusPunktid();
+            punktiSumma += tulemus.getTulemusPunktid();
         }
 
-        return punktisumma;
+        return punktiSumma;
     }
 }

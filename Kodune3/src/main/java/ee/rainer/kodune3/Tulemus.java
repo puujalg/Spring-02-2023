@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Tulemus {
 
     @Id
-    private long tulemuseId;
+    private Long tulemuseId;
     private Long sportlaseId;
     private Long spordialaId;
     private double tulemus;
