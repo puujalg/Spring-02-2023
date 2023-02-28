@@ -1,5 +1,7 @@
-package ee.rainer.webshop;
+package ee.rainer.webshop.controller;
 
+import ee.rainer.webshop.repository.ProductRepository;
+import ee.rainer.webshop.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +29,9 @@ public class ProductController {
         return productRepository.findAll();
     }
 
-    @PostMapping("product")
+    @PostMapping("addproduct")
     public List<Product> addProduct(@RequestBody Product product) {
-        if (productRepository.findById(product.getId()).isEmpty()) {
+        if (product.getId() == null || productRepository.findById(product.getId()).isEmpty()) {
             productRepository.save(product);
         }
         return productRepository.findAll();

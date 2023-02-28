@@ -26,7 +26,6 @@ public class TimeSlotController {
      }
      */
 
-
     @PostMapping("addtimeslot")
     public String addTimeSlot(@RequestBody TimeSlot timeSlot) throws ParseException {
 
@@ -124,12 +123,9 @@ public class TimeSlotController {
 
     }
 
-
     @GetMapping("listactivetimeslots")
     public List<TimeSlot> listActiveTimeSlots() {
-
         return timeSlotRepository.findAllByTakenTrue();
-
     }
 
 }

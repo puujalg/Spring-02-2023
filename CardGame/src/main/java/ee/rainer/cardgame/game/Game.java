@@ -1,13 +1,10 @@
-package ee.rainer.cardgame;
+package ee.rainer.cardgame.game;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -20,7 +17,7 @@ public class Game {
     @GeneratedValue
     private Long id;
     private int correctGuesses;
-    private Date duration;
+    private long duration;
 
     @OneToOne
     private Player player;

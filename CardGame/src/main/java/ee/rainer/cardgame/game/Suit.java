@@ -1,4 +1,4 @@
-package ee.rainer.cardgame;
+package ee.rainer.cardgame.game;
 
 import java.util.Random;
 

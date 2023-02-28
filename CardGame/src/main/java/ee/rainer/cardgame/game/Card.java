@@ -1,10 +1,7 @@
-package ee.rainer.cardgame;
+package ee.rainer.cardgame.game;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 @Getter
 @Setter
