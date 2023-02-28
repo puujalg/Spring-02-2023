@@ -61,7 +61,7 @@ public class GameController {
             lives--;
             if (lives == 0) {
                 card = null;
-                Date gameFinish = new Date():
+                Date gameFinish = new Date();
                 Date diff = new Date(gameFinish.getTime() - gameStartTime.getTime());
 
                 Game game = new Game(1L, correctAnswers, diff, player);
