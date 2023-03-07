@@ -1,4 +1,4 @@
-package ee.rainer.webshop.model;
+package ee.rainer.webshop.model.database;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

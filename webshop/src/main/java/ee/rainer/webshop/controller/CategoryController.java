@@ -1,7 +1,6 @@
 package ee.rainer.webshop.controller;
 
-import ee.rainer.webshop.model.Category;
-import ee.rainer.webshop.model.Product;
+import ee.rainer.webshop.model.database.Category;
 import ee.rainer.webshop.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

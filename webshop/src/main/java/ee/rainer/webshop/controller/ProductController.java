@@ -1,7 +1,7 @@
 package ee.rainer.webshop.controller;
 
 import ee.rainer.webshop.repository.ProductRepository;
-import ee.rainer.webshop.model.Product;
+import ee.rainer.webshop.model.database.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
